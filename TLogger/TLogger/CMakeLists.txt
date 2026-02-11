@@ -15,7 +15,7 @@ set(TSOURCE_FILES
     dllmain.cpp framework.h
     pch.h pch.cpp
 )
-# 출력 디렉토리 설정
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/Build/$<CONFIG>")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/Build/$<CONFIG>")
 
@@ -33,13 +33,5 @@ target_link_libraries(TLogger PRIVATE fmt::fmt)
 source_group("DLL" FILES dllmain.cpp framework.h pch.h pch.cpp)
 source_group("Logger" FILES ILogger.h ILogger.cpp TLogger.h TLogger.cpp)
 
-# 빌드 후 이벤트
-add_custom_command(
-    TARGET TLogger POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_SOURCE_DIR}/Build/include"
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/ILogger.h" "${CMAKE_SOURCE_DIR}/Build/include/"
-    COMMENT "Copying public headers..."
-)
-
-# PCH 및 인클루드 경로 설정
+# 인클루드 경로 설정
 target_include_directories(TLogger PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
