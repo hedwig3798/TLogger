@@ -20,3 +20,8 @@ install(
 )
 
 install(FILES "TLogger/ILogger.h" DESTINATION include)
+install(FILES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
+    "${CMAKE_CURRENT_SOURCE_DIR}/THIRD-PARTY-NOTICES.md"
+    DESTINATION .
+)
