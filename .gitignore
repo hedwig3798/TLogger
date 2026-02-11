@@ -1,0 +1,40 @@
+# cmake build files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+CTestTestfile.cmake
+
+# bulid result files
+/Build/
+/dist/
+/out/
+
+# vs files
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.db
+*.opendb
+*.VC.db
+
+# compile result
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.lib
+*.dll
+*.exp
+*.pch
+
+# extra
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

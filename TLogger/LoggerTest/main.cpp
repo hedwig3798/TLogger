@@ -31,18 +31,7 @@ void LogTestFunction(int _tid)
 
 int main()
 {
-#ifdef _DEBUG
-	HMODULE m_dll = ::LoadLibraryA("./TLoggerD.dll");
-#else
-	HMODULE m_dll = ::LoadLibraryA("./TLogger.dll");
-#endif
-	if (nullptr == m_dll)
-	{
-		std::cout << "log dll is not ready yet\n";
-		return 0;
-	}
-
-	g_logger = ((ILogger * (*)())::GetProcAddress(m_dll, "CreateLoger"))();
+	g_logger = CreateLoger();
 
 	if (nullptr == g_logger)
 	{
