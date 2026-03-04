@@ -33,5 +33,7 @@ target_link_libraries(TLogger PRIVATE fmt::fmt)
 source_group("DLL" FILES dllmain.cpp framework.h pch.h pch.cpp)
 source_group("Logger" FILES ILogger.h ILogger.cpp TLogger.h TLogger.cpp)
 
+install(FILES "ILogger.h" DESTINATION include/TLogger)
+
 # 인클루드 경로 설정
 target_include_directories(TLogger PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")

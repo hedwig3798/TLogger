@@ -7,10 +7,14 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/dist" CACHE PATH "..." FORCE)
 endif()
 
-add_subdirectory(TLogger)
-add_subdirectory(LoggerTest)
+option(BUILD_TEST_APP "make logger test program" ON)
 
-add_dependencies(LoggerTest TLogger)
+add_subdirectory(src/TLogger)
+
+if(BUILD_TEST_APP)
+    add_subdirectory(src/LoggerTest)
+    add_dependencies(LoggerTest TLogger)
+endif()
 
 install(
 	TARGETS TLogger LoggerTest
@@ -19,7 +23,6 @@ install(
     ARCHIVE DESTINATION lib    # .lib
 )
 
-install(FILES "TLogger/ILogger.h" DESTINATION include)
 install(FILES 
     "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
     "${CMAKE_CURRENT_SOURCE_DIR}/THIRD-PARTY-NOTICES.md"
