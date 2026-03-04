@@ -20,6 +20,13 @@ if(BUILD_TEST_APP)
         LIBRARY DESTINATION lib    # 리눅스 .so 
         ARCHIVE DESTINATION lib    # .lib
     )
+else()
+    install(
+    TARGETS TLogger
+    RUNTIME DESTINATION bin              # .exe, .dll
+    LIBRARY DESTINATION lib              # 리눅스 .so 
+    ARCHIVE DESTINATION lib/$<CONFIG>    # .lib
+)
 endif()
 
 
