@@ -14,14 +14,14 @@ add_subdirectory(src/TLogger)
 if(BUILD_TEST_APP)
     add_subdirectory(src/LoggerTest)
     add_dependencies(LoggerTest TLogger)
+    install(
+        TARGETS TLogger LoggerTest
+        RUNTIME DESTINATION bin    # .exe, .dll
+        LIBRARY DESTINATION lib    # 리눅스 .so 
+        ARCHIVE DESTINATION lib    # .lib
+    )
 endif()
 
-install(
-	TARGETS TLogger LoggerTest
-    RUNTIME DESTINATION bin    # .exe, .dll
-    LIBRARY DESTINATION lib    # 리눅스 .so 
-    ARCHIVE DESTINATION lib    # .lib
-)
 
 install(FILES 
     "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
