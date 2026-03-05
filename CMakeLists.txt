@@ -14,19 +14,6 @@ if(BUILD_TEST_APP)
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT LoggerTest)
     add_subdirectory(src/LoggerTest)
     add_dependencies(LoggerTest TLogger)
-    install(
-        TARGETS TLogger LoggerTest
-        RUNTIME DESTINATION bin    # .exe, .dll
-        LIBRARY DESTINATION lib    # 리눅스 .so 
-        ARCHIVE DESTINATION lib    # .lib
-    )
-else()
-    install(
-    TARGETS TLogger
-    RUNTIME DESTINATION bin              # .exe, .dll
-    LIBRARY DESTINATION lib              # 리눅스 .so 
-    ARCHIVE DESTINATION lib/$<CONFIG>    # .lib
-)
 endif()
 
 
